@@ -1,0 +1,42 @@
+void deleteFirst (List *L, playerType player) {
+	List temp;
+
+	temp = *L;
+	*L = temp->link;
+	free(temp);
+}
+
+void deleteLast (List *L, playerType player) {
+	List temp, *trav;
+
+	for (trav = L; (*trav)->link != NULL; trav = &(*trav)->link) {}
+	temp = *trav;
+	*trav = NULL;
+	free(temp);
+}
+
+void deletePos (List *L, playerType player, int pos) {
+	List temp, *trav;
+	int i;
+
+	for (trav = L, i = 1; *trav != NULL && i < pos; trav = &(*trav)->link, i++) {}
+	
+	if (i == pos) {
+		temp = *trav;
+		*trav = temp->link;
+		free(temp);
+	} else {
+		printf("Error: Invalid Position);
+	}
+}
+
+void makeEmpty (List *L) {
+	List *current, next;
+
+	for (current = L; *current != NULL; *current = next) {
+		next = (*current)->link;
+		free(*current);
+	}
+	*current = NULL;
+	
+}

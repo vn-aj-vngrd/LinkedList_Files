@@ -1,0 +1,38 @@
+void insertFirst (List *L, playerType player) {
+	List temp;
+
+	temp = (List)malloc(sizeof(struct node));
+	if (temp != NULL) {
+		temp->data = player;
+		temp->link = *L;
+		*L = temp;
+	}
+}
+
+void insertLast (List *L, playerType Player) {
+	list *trav, temp;
+
+	for (trav = L; *trav != NULL; trav = &(*trav)->link) {}
+	temp = (List)malloc(sizeof(struct node));
+	if (temp != NULL) {
+		temp->data = player;
+		temp->link = NULL;
+		*trav = temp;
+	}
+
+}
+
+void insertPos (List *L, playerType Player, int pos) {
+	List *trav, temp;
+	int i;
+
+	for (trav = L, i = 1; *trav != NULL && i < pos; trav = &(*trav)->link; i++) {}
+	if (pos == i) {
+		temp = (List)malloc(sizeof(stuct node));
+		if (temp != NULL) {
+			temp->data = player;
+			temp->link = *trav;
+			*trav = temp; 
+		}
+	}
+}
